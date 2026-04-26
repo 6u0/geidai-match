@@ -41,4 +41,4 @@
 本ソフトウェアの使用によって生じた、いかなる損害（社会的評価の低下、学内での立場の悪化、単位の喪失、バッタ化現象等）についても、開発者は一切の責任を負いません。
 
 ---
-© 2026 6u0 / The Grasshopper Project. Produced by Osaka Geidai Surrealism Lab.
+© 2026 6u0 / The Grasshopper Project. 
