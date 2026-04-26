@@ -81,8 +81,9 @@ body {
 
 .tinder-loader {
   position: relative;
+  height: 10px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.12);
   overflow: hidden;
 }
 
@@ -90,6 +91,7 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(255, 68, 88, 0.2), rgba(255, 143, 90, 0.9), rgba(255, 68, 88, 0.2));
+  box-shadow: 0 0 12px rgba(255, 68, 88, 0.45);
 }
 
 .tinder-meter {
@@ -144,9 +146,13 @@ body {
 }
 
 .tinder-message-text {
-  margin: 6px 0 0;
+  margin: 0;
   font-size: 15px;
   color: #0f172a;
+}
+
+.tinder-message-text + .tinder-message-text {
+  margin-top: 6px;
 }
 
 .tinder-burst {
@@ -157,8 +163,26 @@ body {
 
 .tinder-burst-item {
   position: absolute;
-  font-size: 28px;
-  filter: drop-shadow(0 10px 18px rgba(255, 68, 88, 0.35));
+  font-size: 54px;
+  filter: drop-shadow(0 16px 28px rgba(255, 68, 88, 0.45));
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+}
+
+.tinder-burst-item.sm {
+  font-size: 32px;
+}
+
+.tinder-burst-item.md {
+  font-size: 44px;
+}
+
+.tinder-burst-item.lg {
+  font-size: 64px;
+}
+
+.tinder-burst-item.trail {
+  opacity: 0.6;
+  filter: drop-shadow(0 10px 20px rgba(255, 68, 88, 0.3));
 }
 
 .tinder-typing {

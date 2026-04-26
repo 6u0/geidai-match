@@ -18,28 +18,28 @@ const fadeVariants = {
 }
 
 const burstItems = [
-  { emoji: '💘', x: 6, y: 8, delay: 0.05 },
-  { emoji: '✨', x: 20, y: 12, delay: 0.1 },
-  { emoji: '💖', x: 38, y: 6, delay: 0.12 },
-  { emoji: '💫', x: 54, y: 10, delay: 0.14 },
-  { emoji: '❤️', x: 72, y: 12, delay: 0.16 },
-  { emoji: '🌟', x: 88, y: 18, delay: 0.18 },
-  { emoji: '💗', x: 10, y: 30, delay: 0.2 },
-  { emoji: '✨', x: 30, y: 28, delay: 0.22 },
-  { emoji: '💞', x: 50, y: 30, delay: 0.24 },
-  { emoji: '🌟', x: 70, y: 32, delay: 0.26 },
-  { emoji: '💘', x: 86, y: 36, delay: 0.28 },
-  { emoji: '💖', x: 14, y: 50, delay: 0.3 },
-  { emoji: '✨', x: 34, y: 48, delay: 0.32 },
-  { emoji: '💫', x: 52, y: 52, delay: 0.34 },
-  { emoji: '❤️', x: 72, y: 54, delay: 0.36 },
-  { emoji: '💗', x: 90, y: 58, delay: 0.38 },
-  { emoji: '💞', x: 8, y: 70, delay: 0.4 },
-  { emoji: '✨', x: 26, y: 72, delay: 0.42 },
-  { emoji: '💘', x: 46, y: 74, delay: 0.44 },
-  { emoji: '🌟', x: 64, y: 76, delay: 0.46 },
-  { emoji: '❤️', x: 82, y: 78, delay: 0.48 },
-  { emoji: '💖', x: 94, y: 80, delay: 0.5 },
+  { emoji: '💘', x: 6, y: 10, delay: 0.05, size: 'lg', drift: 90 },
+  { emoji: '✨', x: 18, y: 12, delay: 0.08, size: 'md', drift: -70 },
+  { emoji: '💖', x: 34, y: 8, delay: 0.1, size: 'lg', drift: 80 },
+  { emoji: '💫', x: 52, y: 12, delay: 0.12, size: 'md', drift: -90 },
+  { emoji: '❤️', x: 70, y: 10, delay: 0.14, size: 'lg', drift: 70 },
+  { emoji: '🌟', x: 86, y: 16, delay: 0.16, size: 'md', drift: -80 },
+  { emoji: '💗', x: 12, y: 26, delay: 0.18, size: 'sm', drift: 60 },
+  { emoji: '✨', x: 28, y: 28, delay: 0.2, size: 'sm', drift: -60 },
+  { emoji: '💞', x: 46, y: 30, delay: 0.22, size: 'md', drift: 50 },
+  { emoji: '🌟', x: 64, y: 32, delay: 0.24, size: 'sm', drift: -50 },
+  { emoji: '💘', x: 82, y: 34, delay: 0.26, size: 'md', drift: 55 },
+  { emoji: '💖', x: 16, y: 48, delay: 0.28, size: 'sm', drift: 40 },
+  { emoji: '✨', x: 34, y: 50, delay: 0.3, size: 'sm', drift: -40 },
+  { emoji: '💫', x: 52, y: 52, delay: 0.32, size: 'md', drift: 45 },
+  { emoji: '❤️', x: 70, y: 54, delay: 0.34, size: 'sm', drift: -45 },
+  { emoji: '💗', x: 88, y: 56, delay: 0.36, size: 'sm', drift: 38 },
+  { emoji: '💞', x: 10, y: 68, delay: 0.38, size: 'sm', drift: -35 },
+  { emoji: '✨', x: 26, y: 72, delay: 0.4, size: 'sm', drift: 32 },
+  { emoji: '💘', x: 44, y: 74, delay: 0.42, size: 'md', drift: -32 },
+  { emoji: '🌟', x: 62, y: 76, delay: 0.44, size: 'sm', drift: 28 },
+  { emoji: '❤️', x: 80, y: 78, delay: 0.46, size: 'md', drift: -28 },
+  { emoji: '💖', x: 94, y: 80, delay: 0.48, size: 'sm', drift: 26 },
 ]
 
 function App() {
@@ -217,19 +217,41 @@ function App() {
                     {burstItems.map((item, index) => (
                       <motion.span
                         key={`${item.emoji}-${index}`}
-                        className="tinder-burst-item"
+                        className={`tinder-burst-item ${item.size}`}
                         style={{ left: `${item.x}%`, top: `${item.y}%` }}
                         initial={{ opacity: 0, scale: 0.4, y: 16 }}
                         animate={{
-                          opacity: [0, 1, 0],
-                          scale: [0.4, 1.4, 0.9],
-                          y: [-30 - index * 4, -240 - index * 7],
-                          x: index % 2 === 0 ? 60 + index * 5 : -60 - index * 5,
-                          rotate: index % 2 === 0 ? 24 : -24,
+                          opacity: [0, 1, 1, 0],
+                          scale: [0.7, 1.7, 1.3, 0.7],
+                          y: [-40 - index * 6, -220 - index * 9, 180 + index * 12],
+                          x: item.drift,
+                          rotate: item.drift > 0 ? 38 : -38,
+                        }}
+                        transition={{
+                          duration: 3,
+                          delay: item.delay,
+                          ease: 'easeInOut',
+                        }}
+                      >
+                        {item.emoji}
+                      </motion.span>
+                    ))}
+                    {burstItems.map((item, index) => (
+                      <motion.span
+                        key={`trail-${item.emoji}-${index}`}
+                        className={`tinder-burst-item trail ${item.size}`}
+                        style={{ left: `${item.x}%`, top: `${item.y}%` }}
+                        initial={{ opacity: 0, scale: 0.3, y: 10 }}
+                        animate={{
+                          opacity: [0, 0.8, 0],
+                          scale: [0.3, 1.1, 0.6],
+                          y: [-10 - index * 4, -140 - index * 8, 120 + index * 10],
+                          x: item.drift * 0.6,
+                          rotate: item.drift > 0 ? 18 : -18,
                         }}
                         transition={{
                           duration: 2.2,
-                          delay: item.delay,
+                          delay: item.delay + 0.15,
                           ease: 'easeOut',
                         }}
                       >
@@ -280,22 +302,11 @@ function App() {
                           className="tinder-avatar-image"
                         />
                         <div className="tinder-bubble">
-                          <motion.span
-                            className="tinder-typing"
-                            aria-hidden="true"
-                            initial={{ opacity: 1 }}
-                            animate={{ opacity: 0 }}
-                            transition={{ delay: 0.8, duration: 0.25 }}
-                          >
-                            <span />
-                            <span />
-                            <span />
-                          </motion.span>
                           <motion.p
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.9, duration: 0.3 }}
+                            transition={{ delay: 0.6, duration: 0.3 }}
                           >
                             マッチありがとうございます。
                           </motion.p>
@@ -311,13 +322,24 @@ function App() {
                           className="tinder-bubble"
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 2.5, duration: 0.35 }}
+                          transition={{ delay: 1.2, duration: 0.35 }}
                         >
+                          <motion.span
+                            className="tinder-typing"
+                            aria-hidden="true"
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 0 }}
+                            transition={{ delay: 2.4, duration: 0.2 }}
+                          >
+                            <span />
+                            <span />
+                            <span />
+                          </motion.span>
                           <motion.p
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 2.7, duration: 0.3 }}
+                            transition={{ delay: 2.5, duration: 0.3 }}
                           >
                             バッタに興味はありますか？
                           </motion.p>
