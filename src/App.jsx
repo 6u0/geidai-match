@@ -41,7 +41,10 @@ function App() {
     '大阪芸大専用マッチングアプリで1人とマッチしました！\n#MATCH_GEIDAI\nhttps://6u0.github.io/geidai-match/'
 
   useEffect(() => {
-    matchAudioRef.current = new Audio(matchSound)
+    const audio = new Audio(matchSound)
+    audio.preload = 'auto'
+    audio.load()
+    matchAudioRef.current = audio
     return () => {
       matchAudioRef.current?.pause()
       matchAudioRef.current = null
