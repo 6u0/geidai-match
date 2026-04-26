@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import tkmt512 from './assets/tkmt512.jpg'
+import tkmt1024 from './assets/tkmt1024.jpg'
 
 const STEPS = {
   ENTRY: 'entry',
@@ -189,8 +191,16 @@ function App() {
                 exit="exit"
                 className="grid gap-8"
               >
-                <div className="flex items-center justify-between">
-                  <div className="space-y-2">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-5">
+                    <img
+                      src={tkmt1024}
+                      srcSet={`${tkmt512} 512w, ${tkmt1024} 1024w`}
+                      sizes="(max-width: 640px) 96px, 120px"
+                      alt="塚本邦彦のアイコン"
+                      className="h-24 w-24 rounded-full border border-gold/60 object-cover shadow-2xl sm:h-28 sm:w-28"
+                    />
+                    <div className="space-y-2">
                     <p className="text-sm uppercase tracking-[0.4em] text-gold/70">
                       Matched
                     </p>
@@ -198,6 +208,7 @@ function App() {
                     <p className="text-white/70">
                       学長らしい格言: 「芸術は、沈黙の中にこそ真価が宿る。」
                     </p>
+                    </div>
                   </div>
                   <span className="hidden rounded-full border border-gold/40 px-4 py-2 text-xs tracking-[0.35em] text-gold/70 sm:block">
                     Premium
