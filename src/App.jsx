@@ -17,7 +17,18 @@ const fadeVariants = {
   exit: { opacity: 0, y: -8, transition: { duration: 0.35 } },
 }
 
-const burstItems = ['💘', '✨', '💖', '💫', '❤️', '🌟']
+const burstItems = [
+  { emoji: '💘', x: 8, y: 14, delay: 0.1 },
+  { emoji: '✨', x: 70, y: 10, delay: 0.15 },
+  { emoji: '💖', x: 42, y: 18, delay: 0.2 },
+  { emoji: '💫', x: 86, y: 24, delay: 0.25 },
+  { emoji: '❤️', x: 16, y: 40, delay: 0.3 },
+  { emoji: '🌟', x: 78, y: 44, delay: 0.35 },
+  { emoji: '💗', x: 28, y: 60, delay: 0.4 },
+  { emoji: '✨', x: 55, y: 68, delay: 0.45 },
+  { emoji: '💞', x: 10, y: 78, delay: 0.5 },
+  { emoji: '🌟', x: 88, y: 74, delay: 0.55 },
+]
 
 function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
@@ -193,23 +204,24 @@ function App() {
                   <div className="tinder-burst" aria-hidden="true">
                     {burstItems.map((item, index) => (
                       <motion.span
-                        key={`${item}-${index}`}
+                        key={`${item.emoji}-${index}`}
                         className="tinder-burst-item"
+                        style={{ left: `${item.x}%`, top: `${item.y}%` }}
                         initial={{ opacity: 0, scale: 0.4, y: 16 }}
                         animate={{
                           opacity: [0, 1, 0],
                           scale: [0.4, 1.1, 0.8],
-                          y: [-20 - index * 6, -120 - index * 12],
-                          x: index % 2 === 0 ? 30 + index * 6 : -30 - index * 6,
+                          y: [-20 - index * 4, -180 - index * 6],
+                          x: index % 2 === 0 ? 40 + index * 6 : -40 - index * 6,
                           rotate: index % 2 === 0 ? 18 : -18,
                         }}
                         transition={{
                           duration: 1.6,
-                          delay: 0.15 + index * 0.05,
+                          delay: item.delay,
                           ease: 'easeOut',
                         }}
                       >
-                        {item}
+                        {item.emoji}
                       </motion.span>
                     ))}
                   </div>
@@ -269,6 +281,20 @@ function App() {
                           >
                             マッチありがとうございます。
                           </motion.p>
+                        </div>
+                      </div>
+                      <div className="tinder-message second">
+                        <img
+                          src={tkmt512}
+                          alt="塚本邦彦"
+                          className="tinder-avatar-image"
+                        />
+                        <motion.div
+                          className="tinder-bubble"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1.7, duration: 0.3 }}
+                        >
                           <motion.p
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
@@ -277,7 +303,7 @@ function App() {
                           >
                             「バッタに興味はありますか？」
                           </motion.p>
-                        </div>
+                        </motion.div>
                       </div>
                     </motion.div>
                   </div>
