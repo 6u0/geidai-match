@@ -12,13 +12,16 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: #f7f7fb;
   color: #0f172a;
+  overflow: hidden;
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 .bg-tinder {
@@ -57,6 +60,74 @@ body {
   backdrop-filter: blur(12px);
   color: #0f172a;
   min-height: 0;
+}
+
+@media (max-width: 640px) {
+  .tinder-card {
+    border-radius: 22px;
+    padding: 16px;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
+  }
+
+  .tinder-chip {
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  .tinder-burst-item {
+    font-size: 42px;
+  }
+
+  .tinder-burst-item.sm {
+    font-size: 24px;
+  }
+
+  .tinder-burst-item.md {
+    font-size: 32px;
+  }
+
+  .tinder-burst-item.lg {
+    font-size: 46px;
+  }
+
+  .tinder-avatar-image {
+    height: 30px;
+    width: 30px;
+  }
+
+  .tinder-message-text {
+    font-size: 14px;
+  }
+
+  .tinder-select {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .tinder-round-button {
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .tinder-cta {
+    padding: 10px 18px;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+  }
+}
+
+@media (max-height: 820px) and (max-width: 640px) {
+  .tinder-card {
+    padding: 14px;
+  }
+
+  .tinder-chip {
+    padding: 12px;
+  }
+
+  .tinder-message.second {
+    margin-top: 6px;
+  }
 }
 
 .tinder-cta {

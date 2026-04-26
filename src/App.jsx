@@ -18,33 +18,28 @@ const fadeVariants = {
 }
 
 const burstItems = [
-  { emoji: '💘', x: 6, y: 10, delay: 0.05, size: 'lg', drift: 90 },
-  { emoji: '✨', x: 18, y: 12, delay: 0.08, size: 'md', drift: -70 },
-  { emoji: '💖', x: 34, y: 8, delay: 0.1, size: 'lg', drift: 80 },
-  { emoji: '💫', x: 52, y: 12, delay: 0.12, size: 'md', drift: -90 },
-  { emoji: '❤️', x: 70, y: 10, delay: 0.14, size: 'lg', drift: 70 },
-  { emoji: '🌟', x: 86, y: 16, delay: 0.16, size: 'md', drift: -80 },
-  { emoji: '💗', x: 12, y: 26, delay: 0.18, size: 'sm', drift: 60 },
-  { emoji: '✨', x: 28, y: 28, delay: 0.2, size: 'sm', drift: -60 },
-  { emoji: '💞', x: 46, y: 30, delay: 0.22, size: 'md', drift: 50 },
-  { emoji: '🌟', x: 64, y: 32, delay: 0.24, size: 'sm', drift: -50 },
-  { emoji: '💘', x: 82, y: 34, delay: 0.26, size: 'md', drift: 55 },
-  { emoji: '💖', x: 16, y: 48, delay: 0.28, size: 'sm', drift: 40 },
-  { emoji: '✨', x: 34, y: 50, delay: 0.3, size: 'sm', drift: -40 },
-  { emoji: '💫', x: 52, y: 52, delay: 0.32, size: 'md', drift: 45 },
-  { emoji: '❤️', x: 70, y: 54, delay: 0.34, size: 'sm', drift: -45 },
-  { emoji: '💗', x: 88, y: 56, delay: 0.36, size: 'sm', drift: 38 },
-  { emoji: '💞', x: 10, y: 68, delay: 0.38, size: 'sm', drift: -35 },
-  { emoji: '✨', x: 26, y: 72, delay: 0.4, size: 'sm', drift: 32 },
-  { emoji: '💘', x: 44, y: 74, delay: 0.42, size: 'md', drift: -32 },
-  { emoji: '🌟', x: 62, y: 76, delay: 0.44, size: 'sm', drift: 28 },
-  { emoji: '❤️', x: 80, y: 78, delay: 0.46, size: 'md', drift: -28 },
-  { emoji: '💖', x: 94, y: 80, delay: 0.48, size: 'sm', drift: 26 },
+  { emoji: '💘', x: 10, y: 12, delay: 0.05, size: 'lg', drift: 86 },
+  { emoji: '✨', x: 24, y: 10, delay: 0.1, size: 'md', drift: -70 },
+  { emoji: '💖', x: 40, y: 14, delay: 0.14, size: 'lg', drift: 74 },
+  { emoji: '💫', x: 58, y: 10, delay: 0.18, size: 'md', drift: -82 },
+  { emoji: '❤️', x: 76, y: 12, delay: 0.22, size: 'lg', drift: 68 },
+  { emoji: '🌟', x: 90, y: 16, delay: 0.26, size: 'md', drift: -76 },
+  { emoji: '💗', x: 18, y: 40, delay: 0.3, size: 'sm', drift: 46 },
+  { emoji: '💞', x: 42, y: 46, delay: 0.34, size: 'md', drift: -44 },
+  { emoji: '✨', x: 66, y: 44, delay: 0.38, size: 'sm', drift: 40 },
+  { emoji: '💘', x: 84, y: 48, delay: 0.42, size: 'md', drift: -38 },
 ]
 
 function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
   const [gender, setGender] = useState('')
+  const tweetText =
+    '芸大専用マッチングアプリで1人とマッチしました！\nhttps://6u0.github.io/geidai-match/'
+
+  const handleTweetResult = () => {
+    const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`
+    window.open(tweetUrl, '_blank', 'noopener,noreferrer')
+  }
 
   useEffect(() => {
     if (step !== STEPS.LOADING) return
@@ -63,8 +58,8 @@ function App() {
   return (
     <div className="min-h-screen bg-tinder text-slate-900">
       <div className="tinder-sheen" aria-hidden="true" />
-      <main className="mx-auto flex min-h-[100svh] w-full max-w-md flex-col px-4 py-4 font-sans">
-        <header className="mb-6 flex items-center justify-between">
+      <main className="mx-auto flex h-[100dvh] w-full max-w-md flex-col px-3 py-2 font-sans sm:px-4 sm:py-4">
+        <header className="mb-3 flex items-center justify-between sm:mb-6">
           <div className="flex items-center gap-2">
             <div className="tinder-badge">MATCH</div>
             <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
@@ -236,7 +231,7 @@ function App() {
                         {item.emoji}
                       </motion.span>
                     ))}
-                    {burstItems.map((item, index) => (
+                    {burstItems.slice(0, 6).map((item, index) => (
                       <motion.span
                         key={`trail-${item.emoji}-${index}`}
                         className={`tinder-burst-item trail ${item.size}`}
@@ -328,7 +323,7 @@ function App() {
                             className="tinder-typing"
                             aria-hidden="true"
                             initial={{ opacity: 1 }}
-                            animate={{ opacity: 0 }}
+                            animate={{ opacity: 0, transitionEnd: { display: 'none' } }}
                             transition={{ delay: 2.4, duration: 0.2 }}
                           >
                             <span />
@@ -347,16 +342,25 @@ function App() {
                       </div>
                     </motion.div>
                   </div>
-                  <button
-                    type="button"
-                    className="tinder-cta"
-                    onClick={() => {
-                      setGender('')
-                      setStep(STEPS.ENTRY)
-                    }}
-                  >
-                    もう一度試す
-                  </button>
+                  <div className="grid gap-3">
+                    <button
+                      type="button"
+                      className="tinder-cta ghost"
+                      onClick={handleTweetResult}
+                    >
+                      Xでシェア
+                    </button>
+                    <button
+                      type="button"
+                      className="tinder-cta"
+                      onClick={() => {
+                        setGender('')
+                        setStep(STEPS.ENTRY)
+                      }}
+                    >
+                      もう一度試す
+                    </button>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
