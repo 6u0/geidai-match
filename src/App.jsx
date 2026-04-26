@@ -37,6 +37,7 @@ function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
   const [gender, setGender] = useState('')
   const matchAudioRef = useRef(null)
+  const isAudioUnlockedRef = useRef(false)
   const tweetText =
     '大阪芸大専用マッチングアプリで1人とマッチしました！\n#MATCH_GEIDAI\nhttps://6u0.github.io/geidai-match/'
 
@@ -50,6 +51,25 @@ function App() {
       matchAudioRef.current = null
     }
   }, [])
+
+  const unlockAudioIfNeeded = () => {
+    if (isAudioUnlockedRef.current) return
+    const audio = matchAudioRef.current
+    if (!audio) return
+
+    audio.muted = true
+    audio
+      .play()
+      .then(() => {
+        audio.pause()
+        audio.currentTime = 0
+        audio.muted = false
+        isAudioUnlockedRef.current = true
+      })
+      .catch(() => {
+        audio.muted = false
+      })
+  }
 
   const handleTweetResult = () => {
     const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`
@@ -179,6 +199,7 @@ function App() {
                           type="button"
                           className="tinder-select"
                           onClick={() => {
+                            unlockAudioIfNeeded()
                             setGender(option)
                             setStep(STEPS.LOADING)
                           }}
