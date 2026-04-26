@@ -36,20 +36,20 @@ function App() {
   }, [step])
 
   return (
-    <div className="min-h-screen bg-tinder text-white">
+    <div className="min-h-screen bg-tinder text-slate-900">
       <div className="tinder-sheen" aria-hidden="true" />
       <main className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 py-10 font-sans">
         <header className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="tinder-badge">ART</div>
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-white/50">
-                Geidai Match
+              <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
+                Geidai Matching
               </p>
-              <h1 className="font-serif text-2xl sm:text-3xl">{title}</h1>
+              <h1 className="font-sans text-2xl sm:text-3xl">{title}</h1>
             </div>
           </div>
-          <div className="hidden rounded-full border border-white/20 px-4 py-2 text-xs tracking-[0.35em] text-white/60 sm:block">
+          <div className="hidden rounded-full border border-slate-300 px-4 py-2 text-xs tracking-[0.35em] text-slate-500 sm:block">
             OSAKA
           </div>
         </header>
@@ -67,14 +67,14 @@ function App() {
                   className="space-y-8"
                 >
                   <div className="space-y-4">
-                    <p className="text-xs uppercase tracking-[0.45em] text-white/60">
-                      Admission Check
+                    <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
+                      Eligibility
                     </p>
-                    <h2 className="font-serif text-3xl sm:text-4xl">
+                    <h2 className="font-sans text-3xl sm:text-4xl">
                       大阪芸術大学の学生ですか？
                     </h2>
-                    <p className="text-white/70">
-                      芸大生だけが辿り着ける、極秘のマッチングフロア。
+                    <p className="text-slate-600">
+                      大阪芸術大学の在学生向けマッチングです。
                     </p>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2">
@@ -105,8 +105,8 @@ function App() {
                   exit="exit"
                   className="space-y-6"
                 >
-                  <h2 className="font-serif text-3xl">大阪芸術大学の学生以外は利用できません</h2>
-                  <p className="text-white/70">またの機会をお待ちしています。</p>
+                  <h2 className="font-sans text-3xl">大阪芸術大学の学生以外は利用できません</h2>
+                  <p className="text-slate-600">対象外のため利用できません。</p>
                   <button
                     type="button"
                     className="tinder-cta ghost"
@@ -126,8 +126,8 @@ function App() {
                   exit="exit"
                   className="space-y-8"
                 >
-                  <p className="text-xs uppercase tracking-[0.45em] text-white/60">
-                    Select Gender
+                  <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
+                    Gender
                   </p>
                   <div className="grid gap-3 sm:grid-cols-3">
                     {['女性', '男性', '回答しない'].map((option) => (
@@ -145,7 +145,7 @@ function App() {
                     ))}
                   </div>
                   {gender && (
-                    <p className="text-xs tracking-[0.3em] text-white/60">
+                    <p className="text-xs tracking-[0.3em] text-slate-500">
                       選択中: {gender}
                     </p>
                   )}
@@ -162,10 +162,10 @@ function App() {
                   className="grid gap-8"
                 >
                   <div className="space-y-3">
-                    <p className="text-xs uppercase tracking-[0.45em] text-white/60">
-                      Searching
+                    <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
+                      Matching
                     </p>
-                    <h2 className="font-serif text-3xl sm:text-4xl">
+                    <h2 className="font-sans text-3xl sm:text-4xl">
                       マッチング相手を探しています...
                     </h2>
                   </div>
@@ -177,8 +177,8 @@ function App() {
                       transition={{ duration: 2.6, ease: 'easeInOut' }}
                     />
                   </div>
-                  <p className="text-white/60">
-                    芸術性、品格、思想の共鳴度を評価しています。
+                  <p className="text-slate-600">
+                    マッチ度を計測しています。
                   </p>
                 </motion.div>
               )}
@@ -199,14 +199,14 @@ function App() {
                         srcSet={`${tkmt512} 512w, ${tkmt1024} 1024w`}
                         sizes="(max-width: 640px) 88px, 120px"
                         alt="塚本邦彦のアイコン"
-                        className="h-24 w-24 rounded-3xl border border-white/30 object-cover shadow-2xl sm:h-28 sm:w-28"
+                        className="h-24 w-24 rounded-3xl border border-slate-200 object-cover shadow-2xl sm:h-28 sm:w-28"
                       />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.45em] text-white/60">
-                          Matched
+                        <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
+                          Match
                         </p>
-                        <h2 className="font-serif text-3xl sm:text-4xl">塚本邦彦</h2>
-                        <p className="text-white/70">
+                        <h2 className="font-sans text-3xl sm:text-4xl">塚本邦彦</h2>
+                        <p className="text-slate-600">
                           学長らしい格言: 「芸術は、沈黙の中にこそ真価が宿る。」
                         </p>
                       </div>
@@ -218,14 +218,14 @@ function App() {
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="tinder-chip">
-                      <p className="text-xs uppercase tracking-[0.35em] text-white/60">
+                      <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                         Profile
                       </p>
                       <p className="mt-2 text-lg">好きなもの: バッタ</p>
-                      <p className="text-white/60">芸術の品格は、日常の細部に宿ります。</p>
+                      <p className="text-slate-600">芸術の品格は、日常の細部に宿ります。</p>
                     </div>
                     <div className="tinder-chip">
-                      <p className="text-xs uppercase tracking-[0.35em] text-white/60">
+                      <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                         Message
                       </p>
                       <p className="mt-2 text-lg">塚本邦彦: 「バッタに興味はありますか？」</p>
