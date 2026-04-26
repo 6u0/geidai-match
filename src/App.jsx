@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="min-h-screen bg-tinder text-slate-900">
       <div className="tinder-sheen" aria-hidden="true" />
-      <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pb-8 pt-6 font-sans">
+      <main className="mx-auto flex min-h-[100svh] w-full max-w-md flex-col px-4 py-4 font-sans">
         <header className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="tinder-badge">MATCH</div>
@@ -218,12 +218,34 @@ function App() {
                       <p className="mt-2 text-lg">好きなもの: バッタ</p>
                       <p className="text-slate-600">芸術の品格は、日常の細部に宿ります。</p>
                     </div>
-                    <div className="tinder-chip">
+                    <motion.div
+                      className="tinder-chip"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.45, duration: 0.4 }}
+                    >
                       <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                         Message
                       </p>
-                      <p className="mt-2 text-lg">塚本邦彦: 「バッタに興味はありますか？」</p>
-                    </div>
+                      <div className="tinder-message">
+                        <div className="tinder-avatar">塚本</div>
+                        <div className="tinder-bubble">
+                          <span className="tinder-typing" aria-hidden="true">
+                            <span />
+                            <span />
+                            <span />
+                          </span>
+                          <motion.p
+                            className="tinder-message-text"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.1, duration: 0.3 }}
+                          >
+                            「バッタに興味はありますか？」
+                          </motion.p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                   <button
                     type="button"

@@ -56,6 +56,7 @@ body {
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
   backdrop-filter: blur(12px);
   color: #0f172a;
+  min-height: 0;
 }
 
 .tinder-cta {
@@ -114,6 +115,72 @@ body {
   border: 1px solid rgba(15, 23, 42, 0.08);
   background: rgba(255, 255, 255, 0.9);
   padding: 22px;
+}
+
+.tinder-message {
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tinder-avatar {
+  height: 36px;
+  width: 36px;
+  border-radius: 999px;
+  background: #ffe6e9;
+  color: #ff4458;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.tinder-bubble {
+  flex: 1;
+  border-radius: 16px;
+  background: #f1f3f7;
+  padding: 10px 12px;
+  position: relative;
+}
+
+.tinder-message-text {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.tinder-typing {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.tinder-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #ff8f5a;
+  opacity: 0.6;
+  animation: typing 0.9s infinite ease-in-out;
+}
+
+.tinder-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.tinder-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 .tinder-action-row {
