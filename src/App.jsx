@@ -17,6 +17,8 @@ const fadeVariants = {
   exit: { opacity: 0, y: -8, transition: { duration: 0.35 } },
 }
 
+const burstItems = ['💘', '✨', '💖', '💫', '❤️', '🌟']
+
 function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
   const [gender, setGender] = useState('')
@@ -186,8 +188,31 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="flex flex-1 flex-col justify-between gap-6"
+                  className="relative flex flex-1 flex-col justify-between gap-6"
                 >
+                  <div className="tinder-burst" aria-hidden="true">
+                    {burstItems.map((item, index) => (
+                      <motion.span
+                        key={`${item}-${index}`}
+                        className="tinder-burst-item"
+                        initial={{ opacity: 0, scale: 0.4, y: 16 }}
+                        animate={{
+                          opacity: [0, 1, 0],
+                          scale: [0.4, 1.1, 0.8],
+                          y: [-20 - index * 6, -120 - index * 12],
+                          x: index % 2 === 0 ? 30 + index * 6 : -30 - index * 6,
+                          rotate: index % 2 === 0 ? 18 : -18,
+                        }}
+                        transition={{
+                          duration: 1.6,
+                          delay: 0.15 + index * 0.05,
+                          ease: 'easeOut',
+                        }}
+                      >
+                        {item}
+                      </motion.span>
+                    ))}
+                  </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <img
@@ -200,9 +225,6 @@ function App() {
                       <div>
                         <p className="text-xs uppercase tracking-[0.45em] text-slate-500">Match</p>
                         <h2 className="text-2xl font-semibold">塚本邦彦</h2>
-                        <p className="text-sm text-slate-500">
-                          学長らしい格言: 「芸術は、沈黙の中にこそ真価が宿る。」
-                        </p>
                       </div>
                     </div>
                     <div className="tinder-meter">
@@ -228,7 +250,11 @@ function App() {
                         Message
                       </p>
                       <div className="tinder-message">
-                        <div className="tinder-avatar">塚本</div>
+                        <img
+                          src={tkmt512}
+                          alt="塚本邦彦"
+                          className="tinder-avatar-image"
+                        />
                         <div className="tinder-bubble">
                           <span className="tinder-typing" aria-hidden="true">
                             <span />
@@ -239,7 +265,15 @@ function App() {
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 1.1, duration: 0.3 }}
+                            transition={{ delay: 0.9, duration: 0.3 }}
+                          >
+                            マッチありがとうございます。
+                          </motion.p>
+                          <motion.p
+                            className="tinder-message-text"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.9, duration: 0.3 }}
                           >
                             「バッタに興味はありますか？」
                           </motion.p>
