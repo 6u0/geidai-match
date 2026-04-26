@@ -38,24 +38,19 @@ function App() {
   return (
     <div className="min-h-screen bg-tinder text-slate-900">
       <div className="tinder-sheen" aria-hidden="true" />
-      <main className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 py-10 font-sans">
-        <header className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="tinder-badge">ART</div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
-                Geidai Matching
-              </p>
-              <h1 className="font-sans text-2xl sm:text-3xl">{title}</h1>
-            </div>
+      <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pb-8 pt-6 font-sans">
+        <header className="mb-6 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="tinder-badge">MATCH</div>
+            <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
+              Geidai
+            </p>
           </div>
-          <div className="hidden rounded-full border border-slate-300 px-4 py-2 text-xs tracking-[0.35em] text-slate-500 sm:block">
-            OSAKA
-          </div>
+          <p className="text-xs font-semibold text-slate-400">{title}</p>
         </header>
 
-        <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center">
-          <div className="tinder-card">
+        <section className="flex flex-1 flex-col">
+          <div className="tinder-card flex flex-1 flex-col">
             <AnimatePresence mode="wait">
               {step === STEPS.ENTRY && (
                 <motion.div
@@ -64,33 +59,32 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="space-y-8"
+                  className="flex flex-1 flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
-                      Eligibility
-                    </p>
-                    <h2 className="font-sans text-3xl sm:text-4xl">
+                    <h2 className="text-3xl font-semibold leading-tight">
                       大阪芸術大学の学生ですか？
                     </h2>
-                    <p className="text-slate-600">
-                      大阪芸術大学の在学生向けマッチングです。
+                    <p className="text-sm text-slate-500">
+                      在学生限定のマッチングです。
                     </p>
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="tinder-action-row">
                     <button
                       type="button"
-                      className="tinder-cta"
-                      onClick={() => setStep(STEPS.GENDER)}
+                      className="tinder-round-button is-no"
+                      onClick={() => setStep(STEPS.DENIED)}
+                      aria-label="NO"
                     >
-                      YES
+                      NO
                     </button>
                     <button
                       type="button"
-                      className="tinder-cta ghost"
-                      onClick={() => setStep(STEPS.DENIED)}
+                      className="tinder-round-button is-yes"
+                      onClick={() => setStep(STEPS.GENDER)}
+                      aria-label="YES"
                     >
-                      NO
+                      YES
                     </button>
                   </div>
                 </motion.div>
@@ -103,10 +97,14 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="space-y-6"
+                  className="flex flex-1 flex-col justify-between"
                 >
-                  <h2 className="font-sans text-3xl">大阪芸術大学の学生以外は利用できません</h2>
-                  <p className="text-slate-600">対象外のため利用できません。</p>
+                  <div className="space-y-3">
+                    <h2 className="text-2xl font-semibold">対象外です</h2>
+                    <p className="text-sm text-slate-500">
+                      大阪芸術大学の学生以外は利用できません。
+                    </p>
+                  </div>
                   <button
                     type="button"
                     className="tinder-cta ghost"
@@ -124,25 +122,25 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="space-y-8"
+                  className="flex flex-1 flex-col justify-between"
                 >
-                  <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
-                    Gender
-                  </p>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {['女性', '男性', '回答しない'].map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        className="tinder-select"
-                        onClick={() => {
-                          setGender(option)
-                          setStep(STEPS.LOADING)
-                        }}
-                      >
-                        {option}
-                      </button>
-                    ))}
+                  <div className="space-y-4">
+                    <h2 className="text-2xl font-semibold">性別を選択</h2>
+                    <div className="grid gap-3">
+                      {['女性', '男性', '回答しない'].map((option) => (
+                        <button
+                          key={option}
+                          type="button"
+                          className="tinder-select"
+                          onClick={() => {
+                            setGender(option)
+                            setStep(STEPS.LOADING)
+                          }}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                   {gender && (
                     <p className="text-xs tracking-[0.3em] text-slate-500">
@@ -159,13 +157,13 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="grid gap-8"
+                  className="flex flex-1 flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
                       Matching
                     </p>
-                    <h2 className="font-sans text-3xl sm:text-4xl">
+                    <h2 className="text-2xl font-semibold">
                       マッチング相手を探しています...
                     </h2>
                   </div>
@@ -177,9 +175,7 @@ function App() {
                       transition={{ duration: 2.6, ease: 'easeInOut' }}
                     />
                   </div>
-                  <p className="text-slate-600">
-                    マッチ度を計測しています。
-                  </p>
+                  <p className="text-sm text-slate-500">マッチ度を計測しています。</p>
                 </motion.div>
               )}
 
@@ -190,23 +186,21 @@ function App() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="grid gap-7"
+                  className="flex flex-1 flex-col justify-between gap-6"
                 >
-                  <div className="flex flex-col gap-5">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <img
                         src={tkmt1024}
                         srcSet={`${tkmt512} 512w, ${tkmt1024} 1024w`}
                         sizes="(max-width: 640px) 88px, 120px"
                         alt="塚本邦彦のアイコン"
-                        className="h-24 w-24 rounded-3xl border border-slate-200 object-cover shadow-2xl sm:h-28 sm:w-28"
+                        className="h-24 w-24 rounded-3xl border border-slate-200 object-cover shadow-xl"
                       />
                       <div>
-                        <p className="text-xs uppercase tracking-[0.45em] text-slate-500">
-                          Match
-                        </p>
-                        <h2 className="font-sans text-3xl sm:text-4xl">塚本邦彦</h2>
-                        <p className="text-slate-600">
+                        <p className="text-xs uppercase tracking-[0.45em] text-slate-500">Match</p>
+                        <h2 className="text-2xl font-semibold">塚本邦彦</h2>
+                        <p className="text-sm text-slate-500">
                           学長らしい格言: 「芸術は、沈黙の中にこそ真価が宿る。」
                         </p>
                       </div>
@@ -216,7 +210,7 @@ function App() {
                       <strong>98%</strong>
                     </div>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-4">
                     <div className="tinder-chip">
                       <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                         Profile
@@ -231,24 +225,19 @@ function App() {
                       <p className="mt-2 text-lg">塚本邦彦: 「バッタに興味はありますか？」</p>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    <button
-                      type="button"
-                      className="tinder-cta"
-                      onClick={() => {
-                        setGender('')
-                        setStep(STEPS.ENTRY)
-                      }}
-                    >
-                      もう一度試す
-                    </button>
-                    <button type="button" className="tinder-cta ghost">
-                      プロフィールを保存
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="tinder-cta"
+                    onClick={() => {
+                      setGender('')
+                      setStep(STEPS.ENTRY)
+                    }}
+                  >
+                    もう一度試す
+                  </button>
                 </motion.div>
               )}
-          </AnimatePresence>
+            </AnimatePresence>
           </div>
         </section>
       </main>

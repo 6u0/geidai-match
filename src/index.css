@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
-  color-scheme: dark;
+  font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans JP', sans-serif;
+  color-scheme: light;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,7 +13,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #0b0b0f;
+  background: #f7f7fb;
+  color: #0f172a;
 }
 
 #root {
@@ -21,9 +22,9 @@ body {
 }
 
 .bg-tinder {
-  background: radial-gradient(circle at top, rgba(255, 99, 72, 0.14), transparent 50%),
-    radial-gradient(circle at 15% 90%, rgba(255, 215, 120, 0.2), transparent 45%),
-    #0b0b0f;
+  background: radial-gradient(circle at top, rgba(255, 87, 113, 0.2), transparent 55%),
+    radial-gradient(circle at 85% 10%, rgba(255, 190, 110, 0.25), transparent 55%),
+    #f7f7fb;
   position: relative;
   overflow: hidden;
 }
@@ -31,7 +32,7 @@ body {
 .tinder-sheen {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 45%);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.45), transparent 55%);
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -39,8 +40,8 @@ body {
 .tinder-badge {
   border-radius: 999px;
   padding: 6px 12px;
-  background: linear-gradient(120deg, #ff6f61, #f7b733);
-  color: #0b0b0f;
+  background: linear-gradient(120deg, #ff4458, #ff8f5a);
+  color: #fff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.35em;
@@ -48,16 +49,17 @@ body {
 
 .tinder-card {
   width: 100%;
-  border-radius: 32px;
-  padding: 36px;
-  background: linear-gradient(160deg, rgba(30, 30, 36, 0.9), rgba(10, 10, 14, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(22px);
+  border-radius: 28px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(12px);
+  color: #0f172a;
 }
 
 .tinder-cta {
-  @apply rounded-full border border-transparent bg-white px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-black shadow-xl transition;
+  @apply rounded-full border border-transparent bg-rose-500 px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-xl transition;
 }
 
 .tinder-cta:hover {
@@ -65,29 +67,29 @@ body {
 }
 
 .tinder-cta.ghost {
-  @apply border border-white/30 bg-transparent text-white;
+  @apply border border-rose-200 bg-transparent text-rose-500;
 }
 
 .tinder-select {
-  @apply rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-left text-lg text-white/80 transition;
+  @apply rounded-2xl border border-slate-200 bg-white px-4 py-4 text-left text-base font-semibold text-slate-700 transition;
 }
 
 .tinder-select:hover {
-  @apply border-white/50 bg-white/10 text-white;
+  @apply border-rose-200 bg-rose-50 text-slate-900;
 }
 
 .tinder-loader {
   position: relative;
   height: 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.08);
   overflow: hidden;
 }
 
 .tinder-loader-bar {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 111, 97, 0.2), rgba(255, 183, 51, 0.9), rgba(255, 111, 97, 0.2));
+  background: linear-gradient(90deg, rgba(255, 68, 88, 0.2), rgba(255, 143, 90, 0.9), rgba(255, 68, 88, 0.2));
 }
 
 .tinder-meter {
@@ -95,21 +97,56 @@ body {
   align-items: center;
   justify-content: space-between;
   border-radius: 999px;
-  padding: 12px 18px;
-  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+  background: rgba(255, 68, 88, 0.08);
   text-transform: uppercase;
-  letter-spacing: 0.35em;
-  font-size: 12px;
+  letter-spacing: 0.25em;
+  font-size: 11px;
 }
 
 .tinder-meter strong {
-  font-size: 16px;
-  letter-spacing: 0.2em;
+  font-size: 15px;
+  letter-spacing: 0.18em;
 }
 
 .tinder-chip {
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.9);
   padding: 22px;
+}
+
+.tinder-action-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tinder-round-button {
+  flex: 1;
+  height: 56px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tinder-round-button.is-no {
+  background: #ffffff;
+  color: #ff4458;
+  box-shadow: 0 10px 20px rgba(255, 68, 88, 0.16);
+  border: 1px solid rgba(255, 68, 88, 0.25);
+}
+
+.tinder-round-button.is-yes {
+  background: linear-gradient(120deg, #ff4458, #ff8f5a);
+  color: #ffffff;
+  box-shadow: 0 12px 22px rgba(255, 68, 88, 0.28);
+}
+
+.tinder-round-button:hover {
+  transform: translateY(-2px);
 }
