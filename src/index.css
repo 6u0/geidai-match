@@ -13,91 +13,103 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1a1a1a 0%, #080808 55%, #020202 100%);
+  background: #0b0b0f;
 }
 
 #root {
   min-height: 100vh;
 }
 
-.bg-luxury {
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(8, 8, 8, 0.95) 50%, rgba(3, 3, 3, 1) 100%);
+.bg-tinder {
+  background: radial-gradient(circle at top, rgba(255, 99, 72, 0.14), transparent 50%),
+    radial-gradient(circle at 15% 90%, rgba(255, 215, 120, 0.2), transparent 45%),
+    #0b0b0f;
   position: relative;
   overflow: hidden;
 }
 
-.lux-stars {
-  position: absolute;
-  inset: -20% 0 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 215, 120, 0.15), transparent 50%),
-    radial-gradient(circle at 80% 10%, rgba(255, 215, 120, 0.18), transparent 60%),
-    radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.08), transparent 55%);
-  filter: blur(0.5px);
-  pointer-events: none;
-}
-
-.glass-panel {
-  border: 1px solid rgba(231, 195, 120, 0.2);
-  border-radius: 32px;
-  padding: 40px;
-  background: rgba(12, 12, 12, 0.6);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(18px);
-}
-
-.lux-glow {
+.tinder-sheen {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 205, 130, 0.2), transparent 55%);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 45%);
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-.lux-button {
-  @apply rounded-full border border-transparent bg-gold px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-black shadow-lg transition;
-}
-
-.lux-button:hover {
-  @apply -translate-y-0.5 shadow-xl;
-}
-
-.lux-button.ghost {
-  @apply border border-gold/60 bg-transparent text-gold;
-}
-
-.lux-select {
-  @apply rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-left text-lg text-white/80 transition;
-}
-
-.lux-select:hover {
-  @apply border-gold/60 bg-white/10 text-white;
-}
-
-.lux-loader {
-  position: relative;
-  height: 8px;
+.tinder-badge {
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  background: linear-gradient(120deg, #ff6f61, #f7b733);
+  color: #0b0b0f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+}
+
+.tinder-card {
+  width: 100%;
+  border-radius: 32px;
+  padding: 36px;
+  background: linear-gradient(160deg, rgba(30, 30, 36, 0.9), rgba(10, 10, 14, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(22px);
+}
+
+.tinder-cta {
+  @apply rounded-full border border-transparent bg-white px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-black shadow-xl transition;
+}
+
+.tinder-cta:hover {
+  @apply -translate-y-0.5 shadow-2xl;
+}
+
+.tinder-cta.ghost {
+  @apply border border-white/30 bg-transparent text-white;
+}
+
+.tinder-select {
+  @apply rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-left text-lg text-white/80 transition;
+}
+
+.tinder-select:hover {
+  @apply border-white/50 bg-white/10 text-white;
+}
+
+.tinder-loader {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 
-.lux-loader-bar {
+.tinder-loader-bar {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 214, 120, 0.15), rgba(255, 214, 120, 0.9), rgba(255, 214, 120, 0.15));
+  background: linear-gradient(90deg, rgba(255, 111, 97, 0.2), rgba(255, 183, 51, 0.9), rgba(255, 111, 97, 0.2));
 }
 
-.lux-profile {
+.tinder-meter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 12px;
+}
+
+.tinder-meter strong {
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.tinder-chip {
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
-  padding: 28px;
-}
-
-.lux-card {
-  border-radius: 24px;
-  border: 1px solid rgba(231, 195, 120, 0.4);
-  background: linear-gradient(160deg, rgba(231, 195, 120, 0.15), rgba(15, 15, 15, 0.9));
-  padding: 28px;
-  display: grid;
-  gap: 12px;
+  padding: 22px;
 }
