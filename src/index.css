@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+  color-scheme: dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a 0%, #080808 55%, #020202 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.bg-luxury {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(8, 8, 8, 0.95) 50%, rgba(3, 3, 3, 1) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.lux-stars {
+  position: absolute;
+  inset: -20% 0 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 215, 120, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 10%, rgba(255, 215, 120, 0.18), transparent 60%),
+    radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.08), transparent 55%);
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.glass-panel {
+  border: 1px solid rgba(231, 195, 120, 0.2);
+  border-radius: 32px;
+  padding: 40px;
+  background: rgba(12, 12, 12, 0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(18px);
+}
+
+.lux-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 205, 130, 0.2), transparent 55%);
+  pointer-events: none;
+}
+
+.lux-button {
+  @apply rounded-full border border-transparent bg-gold px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-black shadow-lg transition;
+}
+
+.lux-button:hover {
+  @apply -translate-y-0.5 shadow-xl;
+}
+
+.lux-button.ghost {
+  @apply border border-gold/60 bg-transparent text-gold;
+}
+
+.lux-select {
+  @apply rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-left text-lg text-white/80 transition;
+}
+
+.lux-select:hover {
+  @apply border-gold/60 bg-white/10 text-white;
+}
+
+.lux-loader {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.lux-loader-bar {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 214, 120, 0.15), rgba(255, 214, 120, 0.9), rgba(255, 214, 120, 0.15));
+}
+
+.lux-profile {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 28px;
+}
+
+.lux-card {
+  border-radius: 24px;
+  border: 1px solid rgba(231, 195, 120, 0.4);
+  background: linear-gradient(160deg, rgba(231, 195, 120, 0.15), rgba(15, 15, 15, 0.9));
+  padding: 28px;
+  display: grid;
+  gap: 12px;
+}
