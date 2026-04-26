@@ -34,7 +34,7 @@ function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
   const [gender, setGender] = useState('')
   const tweetText =
-    '芸大専用マッチングアプリで1人とマッチしました！\nhttps://6u0.github.io/geidai-match/'
+    '大阪芸大専用マッチングアプリで1人とマッチしました！\n#MATCH_GEIDAI\nhttps://6u0.github.io/geidai-match/'
 
   const handleTweetResult = () => {
     const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`
