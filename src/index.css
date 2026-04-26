@@ -157,8 +157,8 @@ body {
 
 .tinder-burst-item {
   position: absolute;
-  font-size: 22px;
-  filter: drop-shadow(0 6px 10px rgba(255, 68, 88, 0.25));
+  font-size: 28px;
+  filter: drop-shadow(0 10px 18px rgba(255, 68, 88, 0.35));
 }
 
 .tinder-typing {

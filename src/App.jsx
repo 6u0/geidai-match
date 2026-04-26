@@ -18,16 +18,28 @@ const fadeVariants = {
 }
 
 const burstItems = [
-  { emoji: '💘', x: 8, y: 14, delay: 0.1 },
-  { emoji: '✨', x: 70, y: 10, delay: 0.15 },
-  { emoji: '💖', x: 42, y: 18, delay: 0.2 },
-  { emoji: '💫', x: 86, y: 24, delay: 0.25 },
-  { emoji: '❤️', x: 16, y: 40, delay: 0.3 },
-  { emoji: '🌟', x: 78, y: 44, delay: 0.35 },
-  { emoji: '💗', x: 28, y: 60, delay: 0.4 },
-  { emoji: '✨', x: 55, y: 68, delay: 0.45 },
-  { emoji: '💞', x: 10, y: 78, delay: 0.5 },
-  { emoji: '🌟', x: 88, y: 74, delay: 0.55 },
+  { emoji: '💘', x: 6, y: 8, delay: 0.05 },
+  { emoji: '✨', x: 20, y: 12, delay: 0.1 },
+  { emoji: '💖', x: 38, y: 6, delay: 0.12 },
+  { emoji: '💫', x: 54, y: 10, delay: 0.14 },
+  { emoji: '❤️', x: 72, y: 12, delay: 0.16 },
+  { emoji: '🌟', x: 88, y: 18, delay: 0.18 },
+  { emoji: '💗', x: 10, y: 30, delay: 0.2 },
+  { emoji: '✨', x: 30, y: 28, delay: 0.22 },
+  { emoji: '💞', x: 50, y: 30, delay: 0.24 },
+  { emoji: '🌟', x: 70, y: 32, delay: 0.26 },
+  { emoji: '💘', x: 86, y: 36, delay: 0.28 },
+  { emoji: '💖', x: 14, y: 50, delay: 0.3 },
+  { emoji: '✨', x: 34, y: 48, delay: 0.32 },
+  { emoji: '💫', x: 52, y: 52, delay: 0.34 },
+  { emoji: '❤️', x: 72, y: 54, delay: 0.36 },
+  { emoji: '💗', x: 90, y: 58, delay: 0.38 },
+  { emoji: '💞', x: 8, y: 70, delay: 0.4 },
+  { emoji: '✨', x: 26, y: 72, delay: 0.42 },
+  { emoji: '💘', x: 46, y: 74, delay: 0.44 },
+  { emoji: '🌟', x: 64, y: 76, delay: 0.46 },
+  { emoji: '❤️', x: 82, y: 78, delay: 0.48 },
+  { emoji: '💖', x: 94, y: 80, delay: 0.5 },
 ]
 
 function App() {
@@ -210,13 +222,13 @@ function App() {
                         initial={{ opacity: 0, scale: 0.4, y: 16 }}
                         animate={{
                           opacity: [0, 1, 0],
-                          scale: [0.4, 1.1, 0.8],
-                          y: [-20 - index * 4, -180 - index * 6],
-                          x: index % 2 === 0 ? 40 + index * 6 : -40 - index * 6,
-                          rotate: index % 2 === 0 ? 18 : -18,
+                          scale: [0.4, 1.4, 0.9],
+                          y: [-30 - index * 4, -240 - index * 7],
+                          x: index % 2 === 0 ? 60 + index * 5 : -60 - index * 5,
+                          rotate: index % 2 === 0 ? 24 : -24,
                         }}
                         transition={{
-                          duration: 1.6,
+                          duration: 2.2,
                           delay: item.delay,
                           ease: 'easeOut',
                         }}
@@ -268,11 +280,17 @@ function App() {
                           className="tinder-avatar-image"
                         />
                         <div className="tinder-bubble">
-                          <span className="tinder-typing" aria-hidden="true">
+                          <motion.span
+                            className="tinder-typing"
+                            aria-hidden="true"
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 0 }}
+                            transition={{ delay: 0.8, duration: 0.25 }}
+                          >
                             <span />
                             <span />
                             <span />
-                          </span>
+                          </motion.span>
                           <motion.p
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
@@ -293,15 +311,15 @@ function App() {
                           className="tinder-bubble"
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 1.7, duration: 0.3 }}
+                          transition={{ delay: 2.5, duration: 0.35 }}
                         >
                           <motion.p
                             className="tinder-message-text"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 1.9, duration: 0.3 }}
+                            transition={{ delay: 2.7, duration: 0.3 }}
                           >
-                            「バッタに興味はありますか？」
+                            バッタに興味はありますか？
                           </motion.p>
                         </motion.div>
                       </div>
