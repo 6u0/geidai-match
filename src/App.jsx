@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import tkmt512 from './assets/tkmt512.jpg'
 import tkmt1024 from './assets/tkmt1024.jpg'
+import matchSound from './assets/威風堂々 - 5578639 (mp3cut.net).mp3'
 
 const STEPS = {
   ENTRY: 'entry',
@@ -35,8 +36,17 @@ const burstItems = [
 function App() {
   const [step, setStep] = useState(STEPS.ENTRY)
   const [gender, setGender] = useState('')
+  const matchAudioRef = useRef(null)
   const tweetText =
     '大阪芸大専用マッチングアプリで1人とマッチしました！\n#MATCH_GEIDAI\nhttps://6u0.github.io/geidai-match/'
+
+  useEffect(() => {
+    matchAudioRef.current = new Audio(matchSound)
+    return () => {
+      matchAudioRef.current?.pause()
+      matchAudioRef.current = null
+    }
+  }, [])
 
   const handleTweetResult = () => {
     const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`
@@ -51,6 +61,11 @@ function App() {
 
   useEffect(() => {
     if (step !== STEPS.RESULT) return
+    const audio = matchAudioRef.current
+    if (audio) {
+      audio.currentTime = 0
+      audio.play().catch(() => {})
+    }
     // Fire-and-forget call to increment match count on GAS.
     fetch(MATCH_COUNT_ENDPOINT).catch(() => {})
   }, [step])
