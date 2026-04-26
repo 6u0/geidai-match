@@ -81,13 +81,14 @@ body {
 
 .tinder-loader {
   position: relative;
-  inset: -8px;
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.08);
   overflow: hidden;
 }
 
-  font-size: 22px;
+.tinder-loader-bar {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(90deg, rgba(255, 68, 88, 0.2), rgba(255, 143, 90, 0.9), rgba(255, 68, 88, 0.2));
 }
 
@@ -97,9 +98,6 @@ body {
   justify-content: space-between;
   border-radius: 999px;
   padding: 10px 16px;
-.tinder-message.second {
-  margin-top: 10px;
-}
   background: rgba(255, 68, 88, 0.08);
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -123,6 +121,10 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+}
+
+.tinder-message.second {
+  margin-top: 10px;
 }
 
 .tinder-avatar-image {
@@ -149,15 +151,13 @@ body {
 
 .tinder-burst {
   position: absolute;
-  inset: 0;
+  inset: -8px;
   pointer-events: none;
 }
 
 .tinder-burst-item {
   position: absolute;
-  right: 18px;
-  top: 12px;
-  font-size: 20px;
+  font-size: 22px;
   filter: drop-shadow(0 6px 10px rgba(255, 68, 88, 0.25));
 }
 
