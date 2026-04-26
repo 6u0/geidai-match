@@ -10,6 +10,8 @@ const STEPS = {
   LOADING: 'loading',
   RESULT: 'result',
 }
+const MATCH_COUNT_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbz3YABGCTpuzVbSm1k2Qbxiab7CK_w21bvQtUxxsbSCFANB5WH3V6vFRKlflhMvwJjK/exec'
 
 const fadeVariants = {
   hidden: { opacity: 0, y: 12 },
@@ -45,6 +47,12 @@ function App() {
     if (step !== STEPS.LOADING) return
     const timer = setTimeout(() => setStep(STEPS.RESULT), 2600)
     return () => clearTimeout(timer)
+  }, [step])
+
+  useEffect(() => {
+    if (step !== STEPS.RESULT) return
+    // Fire-and-forget call to increment match count on GAS.
+    fetch(MATCH_COUNT_ENDPOINT).catch(() => {})
   }, [step])
 
   const title = useMemo(() => {
